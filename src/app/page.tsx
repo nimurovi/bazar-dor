@@ -32,16 +32,21 @@ export interface Product {
 export default async function Home() {
   const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
   const products = await res.json();
-  const productPriceIncrease = products.filter((product: Product) => product.change.dir === "up");
+  const productPriceIncrease = products.filter((product: Product) => product.change.dir === "up") 
   const productPriceDecrease = products.filter((product: Product) => product.change.dir === "down");
- 
+ const sortedProductPriceIncrease = sortProductsByChange(productPriceIncrease);
+  const sortedProductPriceDecrease = sortProductsByChange(productPriceDecrease);
+  function sortProductsByChange(products: Product[]) {
+    products.sort((a, b) => b.change.pct - a.change.pct);
+    return products;
+  }
   return (
     <>
       <Banner />
       <div className="container mx-auto p-4">
         <h2 className="text-2xl font-bold mb-4">Price Increase</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-          {productPriceIncrease.map((product: Product) => (
+          {sortedProductPriceIncrease.slice(0, 6).map((product: Product) => (
             <div key={product.id}  >
               <ProductCard item={product} />
             </div>
@@ -51,7 +56,7 @@ export default async function Home() {
       <div className="container mx-auto p-4">
         <h2 className="text-2xl font-bold mb-4">Price Decrease</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-          {productPriceDecrease.map((product: Product) => (
+          {sortedProductPriceDecrease.slice(0, 6).map((product: Product) => (
             <div key={product.id}  >
               <ProductCard item={product} />
             </div>
