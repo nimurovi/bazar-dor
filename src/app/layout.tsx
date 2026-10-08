@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/shared/navbar/Navbar";
-import Navlinks from "@/shared/navbar/Navlinks";
+import Navlinks from "@/shared/navbar/Catagories";
 import Marquee from "@/shared/navbar/Marquee";
 
 const notoSerifBengali = Noto_Serif_Bengali({
