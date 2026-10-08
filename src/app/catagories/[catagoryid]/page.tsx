@@ -1,6 +1,6 @@
 import ProductCard from '@/components/Productcard';
 import { Product } from '@/shared/navbar/Marquee';
-import React from 'react';
+ 
 
 const page =async ({ params }: { params: { catagoryid: string } }) => {
     const { catagoryid } =await params;

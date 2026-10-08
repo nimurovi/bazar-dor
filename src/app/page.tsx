@@ -1,6 +1,7 @@
 import Banner from "@/components/Banner";
 import ProductCard from "@/components/Productcard";
 import Image from "next/image";
+import Link from "next/link";
 export interface Change {
   dir: "up" | "down";
   pct: number;
@@ -32,9 +33,9 @@ export interface Product {
 export default async function Home() {
   const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
   const products = await res.json();
-  const productPriceIncrease = products.filter((product: Product) => product.change.dir === "up") 
+  const productPriceIncrease = products.filter((product: Product) => product.change.dir === "up")
   const productPriceDecrease = products.filter((product: Product) => product.change.dir === "down");
- const sortedProductPriceIncrease = sortProductsByChange(productPriceIncrease);
+  const sortedProductPriceIncrease = sortProductsByChange(productPriceIncrease);
   const sortedProductPriceDecrease = sortProductsByChange(productPriceDecrease);
   function sortProductsByChange(products: Product[]) {
     products.sort((a, b) => b.change.pct - a.change.pct);
@@ -47,9 +48,9 @@ export default async function Home() {
         <h2 className="text-2xl font-bold mb-4">Price Increase</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {sortedProductPriceIncrease.slice(0, 6).map((product: Product) => (
-            <div key={product.id}  >
+            <Link href={`/products/${product.id}`} key={product.id}>
               <ProductCard item={product} />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -57,9 +58,9 @@ export default async function Home() {
         <h2 className="text-2xl font-bold mb-4">Price Decrease</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {sortedProductPriceDecrease.slice(0, 6).map((product: Product) => (
-            <div key={product.id}  >
+            <Link href={`/products/${product.id}`} key={product.id}>
               <ProductCard item={product} />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -67,12 +68,13 @@ export default async function Home() {
         <h2 className="text-2xl font-bold mb-4">All Products</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {products.map((product: Product) => (
-            <div key={product.id}  >
+            <Link href={`/products/${product.id}`} key={product.id}>
               <ProductCard item={product} />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
+       
 
     </>
   );
