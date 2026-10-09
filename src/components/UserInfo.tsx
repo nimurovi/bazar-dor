@@ -14,7 +14,8 @@ const UserInfo = () => {
 
         <div>
             {user ? (
-                <div className="flex flex-col items-center gap-2">
+                <Link href="/profile">
+                    <div className="flex flex-col items-center gap-2">
 
                     <div className="avatar w-24 rounded">
                         <img alt={user.name} src={user?.image} />
@@ -23,6 +24,7 @@ const UserInfo = () => {
                     <p>Welcome, {user.name}!</p>
 
                 </div>
+                </Link>
             ) : (
                 <div className="flex gap-2">
                     <Link href="/signin">

@@ -67,6 +67,7 @@ export default function SignIn() {
                         </label>
 
                         <input
+                            name="email"
                             id="email"
                             type="email"
                             placeholder="you@example.com"
@@ -89,6 +90,7 @@ export default function SignIn() {
                         </label>
 
                         <input
+                            name="password"
                             id="password"
                             type="password"
                             placeholder="At least 8 characters"
