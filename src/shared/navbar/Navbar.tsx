@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-
+import UserInfo from '@/components/UserInfo';
 const NavbarPage = () => {
 
     const [date, setDate] = useState<string | null>(null);
@@ -23,10 +23,7 @@ const NavbarPage = () => {
                     </div>
                 </div>
             </Link> 
-            <div className="flex gap-2">
-                <button className='btn'>Sign In</button>
-                <button className='btn btn-active btn-success'>Sign Up</button>
-            </div>
+            <UserInfo />
         </div>
     );
 };

@@ -1,7 +1,46 @@
+'use client';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 export default function SignUp() {
+    const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData(event.target as HTMLFormElement);
+        const user = Object.fromEntries(formData.entries()) as {
+            name: string;
+            email: string;
+            password: string;
+            image: string;
+            confirmPassword: string;
+        };
+
+        const { data, error } = await authClient.signUp.email({
+            ...user,
+        })
+        if (data) {
+            toast.success("User signed up successfully:");
+            redirect("/");
+        }
+        if (error) {
+            toast.error(error.message);
+        }
+
+    }
+const handleGoogleSignUp = async () => {
+         await authClient.signIn.social({
+            provider: "google",
+        });
+    }
+
+    const handleGithubSignUp = async () => {
+              await authClient.signIn.social({
+                provider: "github",
+            });
+        }
+
     return (
         <div className="min-h-screen bg-[#f3f8f4] flex flex-col items-center justify-center px-4">
 
@@ -19,7 +58,7 @@ export default function SignUp() {
             {/* Form Card */}
             <div className="w-full max-w-md bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
 
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
 
                     {/* Name */}
                     <div>
@@ -28,6 +67,7 @@ export default function SignUp() {
                         </label>
 
                         <input
+                            name="name"
                             type="text"
                             placeholder="Example: John Doe"
                             className="w-full h-10 px-3 text-sm border border-gray-200 rounded-md 
@@ -43,6 +83,7 @@ export default function SignUp() {
                         </label>
 
                         <input
+                            name="email"
                             type="email"
                             placeholder="you@example.com"
                             className="w-full h-10 px-3 text-sm border border-gray-200 rounded-md 
@@ -58,6 +99,7 @@ export default function SignUp() {
                         </label>
 
                         <input
+                            name="password"
                             type="password"
                             placeholder="At least 8 characters"
                             className="w-full h-10 px-3 text-sm border border-gray-200 rounded-md 
@@ -73,6 +115,7 @@ export default function SignUp() {
                         </label>
 
                         <input
+                            name="confirmPassword"
                             type="password"
                             placeholder="Enter your password again"
                             className="w-full h-10 px-3 text-sm border border-gray-200 rounded-md 
@@ -108,6 +151,7 @@ export default function SignUp() {
                 <div className="grid grid-cols-2 gap-2">
 
                     <button
+                        onClick={handleGoogleSignUp}
                         type="button"
                         className="h-9 border border-gray-200 rounded-md 
             flex items-center justify-center gap-2 text-xs font-medium 
@@ -118,6 +162,7 @@ export default function SignUp() {
                     </button>
 
                     <button
+                        onClick={handleGithubSignUp}
                         type="button"
                         className="h-9 border border-gray-200 rounded-md 
             flex items-center justify-center gap-2 text-xs font-medium 
@@ -132,12 +177,12 @@ export default function SignUp() {
                 {/* Login */}
                 <p className="text-center text-xs text-gray-500 mt-4">
                     Already have an account?{" "}
-                    <a
+                    <Link
                         href="/login"
                         className="text-green-600 hover:text-green-700 font-medium"
                     >
                         Sign in
-                    </a>
+                    </Link>
                 </p>
 
             </div>
