@@ -1,8 +1,8 @@
 import SortProducts from '@/components/Sortproduct';
 import Link from 'next/link';
-const page = async ({ params }: { params: { catagoryid: string } }) => {
-    const { catagoryid } = await params;
-    const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products?category=${catagoryid}`);
+const page = async ({ params }: { params: { categoryid: string } }) => {
+    const { categoryid } = await params;
+    const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/products?category=${categoryid}`);
     const products = await res.json();
     const category = products[0]?.category;
     const icon = products[0]?.categoryIcon;

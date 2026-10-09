@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/shared/navbar/Navbar";
-import Navlinks from "@/shared/navbar/Catagories";
+import Categories from "@/shared/navbar/Categories"; 
 import Marquee from "@/shared/navbar/Marquee";
+import { Suspense } from "react";
 
 const notoSerifBengali = Noto_Serif_Bengali({
-   
+
   subsets: ["latin", "bengali"],
 });
 
- 
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,13 +25,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${notoSerifBengali.className}   h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        
+
         <Navbar />
-        <Navlinks />
-        <Marquee />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Categories /> 
+          <Marquee />
+        </Suspense>
         {children}
-        
-        </body>
+
+      </body>
     </html>
   );
 }

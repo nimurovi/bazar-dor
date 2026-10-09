@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -59,3 +60,4 @@ const SortProducts = ({ products }: { products: Product[] }) => {
 };
 
 export default SortProducts;
+

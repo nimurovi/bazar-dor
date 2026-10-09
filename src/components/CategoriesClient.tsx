@@ -1,6 +1,6 @@
 'use client';
-
-import { Category } from '@/shared/navbar/Catagories';
+ 
+import { Category } from '@/shared/navbar/Categories';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -16,11 +16,11 @@ const CategoriesClient = ({
         <div className="container mx-auto flex flex-wrap gap-4 bg-white p-4">
             {categories.map((category) => {
                 const isActive =
-                    pathname === `/catagories/${category.id}`;
+                    pathname === `/categories/${category.id}`;
 
                 return (
                     <Link
-                        href={`/catagories/${category.id}`}
+                        href={`/categories/${category.id}`}
                         key={category.id}
                         className={`rounded-lg px-4 py-2 transition ${isActive
                                 ? 'bg-green-600 text-white'

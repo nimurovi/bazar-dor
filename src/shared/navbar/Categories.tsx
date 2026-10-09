@@ -18,5 +18,5 @@ const Catagories = async () => {
         </>
     );
 };
-
 export default Catagories;
+
