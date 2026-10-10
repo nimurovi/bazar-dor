@@ -33,14 +33,14 @@ const handleGoogleSignUp = async () => {
          await authClient.signIn.social({
             provider: "google",
         });
-        toast.success("User signed up successfully ")
+        
     }
 
     const handleGithubSignUp = async () => {
               await authClient.signIn.social({
                 provider: "github",
             });
-            toast.success("User signed up successfully ")
+            
         }
 
     return (

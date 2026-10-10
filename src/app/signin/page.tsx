@@ -32,13 +32,13 @@ export default function SignIn() {
             provider: "google",
             
         });
-        toast.success("User signed in successfully ") 
+        
     }
     const handleGithubSignIn = async () => {
         const data = await authClient.signIn.social({
             provider: "github",
         });
-        toast.success("User signed in successfully ")
+         
     }
 
     return (
