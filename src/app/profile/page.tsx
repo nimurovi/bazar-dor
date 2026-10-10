@@ -4,6 +4,7 @@
 import { FaArrowRightFromBracket, FaUser } from "react-icons/fa6";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 export default function Profile() {
 
@@ -12,6 +13,8 @@ export default function Profile() {
 
     const handleSignOut = async () => {
         await authClient.signOut();
+        toast.success("Signed out successfully!");
+        redirect("/");
     };
     if (isPending) {
         return (
