@@ -8,7 +8,7 @@ const UserInfo = () => {
 
     // const handleSignOut = async () => {
     //     await authClient.signOut();
-        
+
     // }
     return (
 
@@ -17,13 +17,16 @@ const UserInfo = () => {
                 <Link href="/profile">
                     <div className="flex flex-row items-center gap-2">
 
-                    <div className="avatar w-24 rounded">
-                        <img alt={user.name} src={user?.image} />
+                        <div className="avatar w-24 rounded">
+                            <img
+                                alt={user.name || "User"}
+                                src={user.image ?? undefined}
+                            />
+                        </div>
+
+                        <p>{user.name}!</p>
+
                     </div>
-
-                    <p>{user.name}!</p>
-
-                </div>
                 </Link>
             ) : (
                 <div className="flex gap-2">

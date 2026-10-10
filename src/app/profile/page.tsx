@@ -68,11 +68,13 @@ export default function Profile() {
 
                         {/* Profile Image */}
                         {user.image ? (
+
                             <img
-                                src={user.image}
+                                src={user.image == null ? undefined : user.image}
                                 alt={user.name || "Profile"}
                                 className="w-[62px] h-[62px] rounded-xl object-cover shrink-0"
                             />
+
                         ) : (
                             <div className="w-[62px] h-[62px] rounded-xl bg-green-100 flex items-center justify-center shrink-0">
                                 <FaUser className="text-2xl text-green-700" />

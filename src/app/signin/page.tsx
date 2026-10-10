@@ -30,12 +30,15 @@ export default function SignIn() {
     const handleGoogleSignIn = async () => {
         const data = await authClient.signIn.social({
             provider: "google",
+            
         });
+        toast.success("User signed in successfully ") 
     }
     const handleGithubSignIn = async () => {
         const data = await authClient.signIn.social({
             provider: "github",
         });
+        toast.success("User signed in successfully ")
     }
 
     return (
