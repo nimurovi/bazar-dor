@@ -1,34 +1,43 @@
+import { notFound } from 'next/navigation';
 import React from 'react';
 export type Market = {
-  market: string;
-  division: string;
-  min: number;
-  max: number;
+    market: string;
+    division: string;
+    min: number;
+    max: number;
 };
 
 export type Item = {
-  id: number;
-  slug: string;
-  nameBn: string;
-  category: string;
-  categoryNameBn: string;
-  categoryIcon: string;
-  unit: string;
-  image: string;
-  today: number;
-  yesterday: number;
-  lastWeek: number;
-  lastMonth: number;
-  change: {
-    dir: "up" | "down";
-    pct: number;
-  };
-  markets: Market[];
+    id: number;
+    slug: string;
+    nameBn: string;
+    category: string;
+    categoryNameBn: string;
+    categoryIcon: string;
+    unit: string;
+    image: string;
+    today: number;
+    yesterday: number;
+    lastWeek: number;
+    lastMonth: number;
+    change: {
+        dir: "up" | "down";
+        pct: number;
+    };
+    markets: Market[];
 };
 const page = async ({ params }: { params: { productid: string } }) => {
     const { productid } = await params;
     const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products/${productid}`);
     const product = await res.json();
+
+    if (!res.ok) {
+        notFound();
+    }
+ 
+    if (!product || !product.id || !product.slug) {
+        notFound();
+    }
 
     return (
         <div className="min-h-screen bg-[#f3f8f4] py-8">
