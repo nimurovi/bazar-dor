@@ -15,13 +15,13 @@ const UserInfo = () => {
         <div>
             {user ? (
                 <Link href="/profile">
-                    <div className="flex flex-col items-center gap-2">
+                    <div className="flex flex-row items-center gap-2">
 
                     <div className="avatar w-24 rounded">
                         <img alt={user.name} src={user?.image} />
                     </div>
 
-                    <p>Welcome, {user.name}!</p>
+                    <p>{user.name}!</p>
 
                 </div>
                 </Link>

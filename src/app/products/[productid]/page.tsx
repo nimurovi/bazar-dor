@@ -72,7 +72,7 @@ const page = async ({ params }: { params: { productid: string } }) => {
                         <p className="text-xs text-gray-500">Taka / kg</p>
 
                         <p className="mt-1 text-xs font-semibold text-red-500">
-                            ▲ {product.change.pct}%
+                            ▲ {product.change?.pct}%
                         </p>
                     </div>
                 </div>
