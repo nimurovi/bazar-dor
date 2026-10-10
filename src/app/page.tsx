@@ -32,7 +32,7 @@ export interface Product {
   markets: Market[];
 }
 export default async function Home() {
-  const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
+  const res = await fetch("https://api-store-indol.vercel.app/api/bazardor/products");
   const products = await res.json();
   const productPriceIncrease = products.filter((product: Product) => product.change.dir === "up")
   const productPriceDecrease = products.filter((product: Product) => product.change.dir === "down");

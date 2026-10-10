@@ -2,7 +2,7 @@ import SortProducts from '@/components/Sortproduct';
 import Link from 'next/link';
 const page = async ({ params }: { params: { categoryid: string } }) => {
     const { categoryid } = await params;
-    const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/products?category=${categoryid}`);
+    const res = await fetch(`https://api-store-indol.vercel.app/api/bazardor/products?category=${categoryid}`);
     const products = await res.json();
     const category = products[0]?.category;
     const icon = products[0]?.categoryIcon;

@@ -8,7 +8,7 @@ export interface Category {
     icon: string;
 }
 const Catagories = async () => {
-    const response = await fetch("https://api.api-store.workers.dev/api/bazardor/categories");
+    const response = await fetch("https://api-store-indol.vercel.app/api/bazardor/categories");
     const categories = await response.json();
 
     return (

@@ -32,7 +32,7 @@ export interface Product {
     markets: Market[];
 }
 const Marquee = async () => {
-    const response = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
+    const response = await fetch("https://api-store-indol.vercel.app/api/bazardor/products");
     const products = await response.json();
 
     return (

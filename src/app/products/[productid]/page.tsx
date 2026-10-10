@@ -28,7 +28,7 @@ export type Item = {
 };
 const page = async ({ params }: { params: { productid: string } }) => {
     const { productid } = await params;
-    const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products/${productid}`);
+    const res = await fetch(`https://api-store-indol.vercel.app/api/bazardor/products/${productid}`);
     const product = await res.json();
 
     if (!res.ok) {
