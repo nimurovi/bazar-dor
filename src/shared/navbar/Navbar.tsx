@@ -13,16 +13,14 @@ const NavbarPage = () => {
         }));
     }, []);
     return (
-        <div className="container mx-auto flex justify-between items-center p-4 bg-white shadow-md">
-            <Link href="/">
-                <div className="flex items-center gap-3">
-                    <Image src="/logo-icon.png" className='border rounded p-3 bg-green-500' alt="Logo" height={50} width={50} />
-                    <div>
-                        <h1 className='text-2xl font-bold'>Bazar Dor</h1>
-                        <p>{date}</p>
-                    </div>
+        <div className="container mx-auto flex flex-col gap-4 bg-white p-4 shadow-md sm:flex-row sm:items-center sm:justify-between">            <Link href="/">
+            <div className="flex items-center gap-2 sm:gap-3">
+                <Image src="/logo-icon.png" className="h-10 w-10 rounded border bg-green-500 p-2 sm:h-[50px] sm:w-[50px] sm:p-3" alt="Logo" height={50} width={50} />                <div>
+                    <h1 className='text-2xl font-bold'>Bazar Dor</h1>
+                    <p>{date}</p>
                 </div>
-            </Link> 
+            </div>
+        </Link>
             <UserInfo />
         </div>
     );

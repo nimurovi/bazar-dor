@@ -6,8 +6,8 @@ const Banner = () => {
     });
     return (
         <section className="container mx-auto rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-            <div className="flex items-center justify-between gap-6">
-                <div>
+            <div className="flex flex-col-reverse items-center gap-6 sm:flex-row sm:justify-between sm:gap-8">
+                <div className="w-full text-center sm:text-left">
                     <span className="inline-block rounded-full bg-green-100 px-4 py-1 text-sm font-medium text-green-700">
                         {date}
                     </span>
