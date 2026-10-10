@@ -1,7 +1,7 @@
 
 import Banner from "@/components/Banner";
 import ProductCard from "@/components/Productcard";
-import Image from "next/image";
+ 
 import Link from "next/link";
 export interface Change {
   dir: "up" | "down";
@@ -46,7 +46,7 @@ export default async function Home() {
     <>
       <Banner />
       <div className="container mx-auto p-4">
-        <h2 className="text-2xl font-bold mb-4">Price Increase</h2>
+        <h2 className="text-2xl font-bold mb-4">▲ Price Increase</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {sortedProductPriceIncrease.slice(0, 6).map((product: Product) => (
             <Link href={`/products/${product.id}`} key={product.id}>
@@ -56,7 +56,7 @@ export default async function Home() {
         </div>
       </div>
       <div className="container mx-auto p-4">
-        <h2 className="text-2xl font-bold mb-4">Price Decrease</h2>
+        <h2 className="text-2xl font-bold mb-4">▼ Price Decrease</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {sortedProductPriceDecrease.slice(0, 6).map((product: Product) => (
             <Link href={`/products/${product.id}`} key={product.id}>

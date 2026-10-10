@@ -7,6 +7,7 @@ import Marquee from "@/shared/navbar/Marquee";
 import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
 import Footer from "@/shared/footer/Footer";
+import { ClipLoader } from "react-spinners";
 
 const notoSerifBengali = Noto_Serif_Bengali({
 
@@ -29,11 +30,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
 
         <Navbar />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div><ClipLoader /></div>}>
           <Categories /> 
           <Marquee />
-        </Suspense>
+        
         {children}
+        </Suspense>
          <ToastContainer />
          <Footer /> 
       </body>
